@@ -208,3 +208,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #777;
 }
+
+.navbar-collapse{
+  background-color: white !important;
+}
