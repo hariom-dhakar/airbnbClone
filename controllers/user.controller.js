@@ -1,4 +1,5 @@
 const User = require("../Models/user.js");
+const axios = require("axios");
 
 module.exports.signup = (req, res) => {
   res.render("users/signup.ejs");
@@ -7,25 +8,24 @@ module.exports.signup = (req, res) => {
 module.exports.signupPage = async (req, res, next) => {
   try {
     const { email, username, password } = req.body;
-
-    // Validate required fields
     if (!email || !username || !password) {
       req.flash("error", "All fields are required.");
       return res.redirect("/signup");
     }
 
-    // Create user and hash password
     const user = new User({ email, username });
+    if (password.length < 8) {
+      req.flash("error", "Password must be at least 8 characters long.");
+      return res.redirect("/signup");
+    }
     const registeredUser = await User.register(user, password);
 
-    // Log in the user after registration
     req.login(registeredUser, (err) => {
       if (err) return next(err);
       req.flash("success", "Welcome to Project!");
       res.redirect("/listings");
     });
   } catch (e) {
-    // Handle duplicate email/username errors
     if (e.code === 11000) {
       req.flash("error", "Email or Username already exists.");
     } else {
@@ -34,7 +34,6 @@ module.exports.signupPage = async (req, res, next) => {
     res.redirect("/signup");
   }
 };
-
 
 module.exports.login = (req, res) => {
   res.render("users/login.ejs");
@@ -57,4 +56,3 @@ module.exports.logout = (req, res, next) => {
     res.redirect("/listings");
   });
 };
-
