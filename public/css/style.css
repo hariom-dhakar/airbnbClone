@@ -134,17 +134,17 @@ body {
 
 #filters {
   display: flex;
-  flex-wrap: nowrap; /* Prevents wrapping to the next line */
+  flex-wrap: nowrap; 
   margin-bottom: 2rem;
 }
 .filters-container{
   display: flex;
-  flex-wrap: nowrap; /* Prevents wrapping to the next line */
+  flex-wrap: nowrap; 
   justify-content: flex-start;
   overflow-x: auto;
   overflow-y: hidden;
   max-width: 80vw;
-  gap: 1.5rem; /* Space between filters */
+  gap: 1.5rem; 
   padding: 0 1rem;
 }
 
@@ -179,12 +179,12 @@ body {
   font-size: 1rem;
 }
 .tax-toggle:hover {
-  transform: scale(1.05); /* Slight zoom effect */
+  transform: scale(1.05); 
 }
 @media only screen and (max-width: 936px) {
   #filters {
-    max-width: 90vw; /* More space on smaller screens */
-    gap: 1rem; /* Less space between filters */
+    max-width: 90vw; 
+    gap: 1rem; 
   }
 }
 @media only screen and (max-width: 936px) {
