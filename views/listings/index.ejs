@@ -1,40 +1,7 @@
 <% layout("/layouts/boilerPlate.ejs") %>
 <body>
-    <!-- <h3>All listings</h3> -->
-     <style>
-        #filters{
-            display: flex;
-            flex-wrap: wrap;
-
-        }
-        .filter{
-            text-align: center;
-            margin-right: 1rem;
-            margin-top: 2rem;
-            cursor: pointer;
-            opacity: 70%;
-        }
-        .filter:hover{
-            opacity: 100%;
-        }
-
-        .filters p{
-            font-size: 0.8rem;
-        }
-        .tax-toggle{
-            margin-left: auto;
-            margin-right: 1rem;
-            margin-top: 2rem; 
-            border: 0.5px groove #c3c3c3;
-            padding: 0.6rem 0.9rem;
-            border-radius: 1.5rem;
-            height: 3rem;
-        }
-        .tax-info{
-            display: none;
-        }
-     </style>
      <div id="filters">
+        <div class="filters-container">
         <div class="filter">
             <div><i class="fa-solid fa-fire"></i></div>
             <p>Popular</p>
@@ -58,6 +25,15 @@
         <div class="filter">
             <div><i class="fa-solid fa-mountain"></i></div>
             <p>Mountains</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-school"></i></div>
+            <p>School</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-igloo"></i></div>
+            <p>Cold Place</p>
+        </div>
         </div>
         <div class="tax-toggle">
             <div class="form-check-reverse form-switch container-fluid">
