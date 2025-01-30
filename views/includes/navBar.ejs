@@ -19,11 +19,13 @@
         <a class="nav-link" href="/listings">Explore</a>
       </div>
       <div class="search-space ms-auto">
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" action="/listings/search" method="GET">
           <input
             class="form-control me-2 inp-search"
-            type="search"
+            type="text"
+            name="query"
             placeholder="Search"
+            id="search-content"
           />
           <button class="btn btn-search" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>Search

@@ -5,6 +5,23 @@ const geocodingClient = require('@mapbox/mapbox-sdk/services/geocoding')({
 });
 const Listing = require("../Models/listing.js");
 
+module.exports.search= async (req, res) => {
+  try {
+    let query = req.query.query;
+      let listings;
+      if (query) {
+          listings = await Listing.find({ 
+              title: { $regex: query, $options: "i" } // Case-insensitive search
+          });
+      } else {
+          listings = await Listing.find(); // Fetch all listings if no query
+      }
+      res.render("listings/searchIndex.ejs", { listings, query }); // Pass listings to EJS template
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+  }
+};
 
 module.exports.index = async (req, res) => {
   try {

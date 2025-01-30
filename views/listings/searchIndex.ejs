@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerPlate.ejs") %>
+ <!-- Search Results Display -->
+  <% if (query) { %>
+    <h2>Listings</h2>
+    <p>Showing results for "<b><%= query %></b>"</p>
+<% } %>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% if (listings.length === 0) { %>
+        <p>No results found.</p>
+    <% } else { %>
+        <% for (let listing of listings) { %>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+                <div class="card col listing-card">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_img" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <p><b><%= listing.title %></b></p>
+                            &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %>/night
+                            <i class="tax-info">&nbsp;&nbsp; +18% GST</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        <% } %>
+    <% } %>
+</div>
